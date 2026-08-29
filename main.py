@@ -4,13 +4,7 @@ import time
 import cv2
 from ultralytics import YOLO
 
-# =========================================================
-# AI OBJECT DETECTOR - PORTABLE WINDOWS PROTOTYPE
-# =========================================================
-# The program uses a pretrained YOLO26 nano detector.
-# On the first run, Ultralytics can download the model
-# automatically. After that, the local .pt file is reused.
-# =========================================================
+
 
 MODEL_NAME = "yolo26n.pt"
 CONFIDENCE = 0.45
@@ -91,14 +85,14 @@ def main():
             print("Could not read a frame from the webcam.")
             break
 
-        # Run object detection
+        
         results = model.predict(
             source=frame,
             conf=CONFIDENCE,
             verbose=False
         )
 
-        # Draw detections
+        
         annotated_frame = results[0].plot()
 
         current_time = time.time()
